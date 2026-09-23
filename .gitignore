@@ -11,3 +11,10 @@ myenv
 *.pkl
 *.csv
 *.json
+
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.ipynb_checkpoints
