@@ -15,8 +15,13 @@ def load_all():
 
     def download(file_id, output):
         if not os.path.exists(output):
-            url = f"https://drive.google.com/uc?id={file_id}"
-            gdown.download(url, output, quiet=False, fuzzy=True)
+            downloaded_file = gdown.download(
+                id=file_id,
+                output=output,
+                quiet=False,
+            )
+            if downloaded_file is None or not os.path.exists(output):
+                raise RuntimeError(f"Could not download model file: {output}")
 
     # 🔥 Download files INSIDE cache
     download("1aX1nG0veHY7ydmeBGKNTT9nXCMc41Cqf", "df_cb.pkl")
